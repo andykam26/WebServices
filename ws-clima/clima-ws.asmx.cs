@@ -18,6 +18,7 @@ namespace ws_clima
     {
 
         [WebMethod]
+       
         public string HelloWorld()
         {
             return "Hola a todos";
