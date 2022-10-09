@@ -87,7 +87,12 @@ namespace ConsumoClima
                 string direccion_viento = Ddl_direccion_viento.SelectedValue;
                 serverweather.clima_ws objupdt = new serverweather.clima_ws();
                int updt= objupdt.UpdatePronostic(id_ciudad, id_clima, velocidad_viento, temperatura, posibilidad_lluvia, direccion_viento);
-               Response.Redirect("update.aspx");
+            serverweather.clima_ws Objws = new serverweather.clima_ws();
+            DataSet dscity = Objws.SelectAllCity();
+            DataTable dt = dscity.Tables[0];
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "Func()", true);
             
         }
     }
