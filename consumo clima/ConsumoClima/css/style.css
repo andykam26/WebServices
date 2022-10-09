@@ -1134,7 +1134,9 @@ form textarea {
       color: #bfc1c8; }
 
 .main-navigation {
-  float: right; }
+  float: right;
+    height: 21px;
+}
   .main-navigation .menu-toggle, .main-navigation .menu {
     vertical-align: middle; }
   .main-navigation .menu-toggle {

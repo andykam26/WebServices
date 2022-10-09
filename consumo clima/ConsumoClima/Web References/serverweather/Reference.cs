@@ -30,15 +30,17 @@ namespace ConsumoClima.serverweather {
     [System.Web.Services.WebServiceBindingAttribute(Name="clima_wsSoap", Namespace="http://tempuri.org/")]
     public partial class clima_ws : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback InsertDetailOperationCompleted;
+        private System.Threading.SendOrPostCallback SelectAllCityOperationCompleted;
         
-        private System.Threading.SendOrPostCallback UpdateDetailOperationCompleted;
+        private System.Threading.SendOrPostCallback SelectListCityOperationCompleted;
         
-        private System.Threading.SendOrPostCallback DeleteRecordOperationCompleted;
+        private System.Threading.SendOrPostCallback SelectCityByIdOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetDetialByIDOperationCompleted;
+        private System.Threading.SendOrPostCallback InsertPronosticOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetlistcityByIDOperationCompleted;
+        private System.Threading.SendOrPostCallback UpdatePronosticOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ValidateUserwsOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -79,166 +81,212 @@ namespace ConsumoClima.serverweather {
         }
         
         /// <remarks/>
-        public event InsertDetailCompletedEventHandler InsertDetailCompleted;
+        public event SelectAllCityCompletedEventHandler SelectAllCityCompleted;
         
         /// <remarks/>
-        public event UpdateDetailCompletedEventHandler UpdateDetailCompleted;
+        public event SelectListCityCompletedEventHandler SelectListCityCompleted;
         
         /// <remarks/>
-        public event DeleteRecordCompletedEventHandler DeleteRecordCompleted;
+        public event SelectCityByIdCompletedEventHandler SelectCityByIdCompleted;
         
         /// <remarks/>
-        public event GetDetialByIDCompletedEventHandler GetDetialByIDCompleted;
+        public event InsertPronosticCompletedEventHandler InsertPronosticCompleted;
         
         /// <remarks/>
-        public event GetlistcityByIDCompletedEventHandler GetlistcityByIDCompleted;
+        public event UpdatePronosticCompletedEventHandler UpdatePronosticCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertDetail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int InsertDetail(string PersonName, string PersonCity) {
-            object[] results = this.Invoke("InsertDetail", new object[] {
-                        PersonName,
-                        PersonCity});
-            return ((int)(results[0]));
+        public event ValidateUserwsCompletedEventHandler ValidateUserwsCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SelectAllCity", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet SelectAllCity() {
+            object[] results = this.Invoke("SelectAllCity", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void InsertDetailAsync(string PersonName, string PersonCity) {
-            this.InsertDetailAsync(PersonName, PersonCity, null);
+        public void SelectAllCityAsync() {
+            this.SelectAllCityAsync(null);
         }
         
         /// <remarks/>
-        public void InsertDetailAsync(string PersonName, string PersonCity, object userState) {
-            if ((this.InsertDetailOperationCompleted == null)) {
-                this.InsertDetailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertDetailOperationCompleted);
+        public void SelectAllCityAsync(object userState) {
+            if ((this.SelectAllCityOperationCompleted == null)) {
+                this.SelectAllCityOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSelectAllCityOperationCompleted);
             }
-            this.InvokeAsync("InsertDetail", new object[] {
-                        PersonName,
-                        PersonCity}, this.InsertDetailOperationCompleted, userState);
+            this.InvokeAsync("SelectAllCity", new object[0], this.SelectAllCityOperationCompleted, userState);
         }
         
-        private void OnInsertDetailOperationCompleted(object arg) {
-            if ((this.InsertDetailCompleted != null)) {
+        private void OnSelectAllCityOperationCompleted(object arg) {
+            if ((this.SelectAllCityCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.InsertDetailCompleted(this, new InsertDetailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.SelectAllCityCompleted(this, new SelectAllCityCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateDetail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int UpdateDetail(int PersonID, string PersonName, string PersonCity) {
-            object[] results = this.Invoke("UpdateDetail", new object[] {
-                        PersonID,
-                        PersonName,
-                        PersonCity});
-            return ((int)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SelectListCity", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet SelectListCity() {
+            object[] results = this.Invoke("SelectListCity", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void UpdateDetailAsync(int PersonID, string PersonName, string PersonCity) {
-            this.UpdateDetailAsync(PersonID, PersonName, PersonCity, null);
+        public void SelectListCityAsync() {
+            this.SelectListCityAsync(null);
         }
         
         /// <remarks/>
-        public void UpdateDetailAsync(int PersonID, string PersonName, string PersonCity, object userState) {
-            if ((this.UpdateDetailOperationCompleted == null)) {
-                this.UpdateDetailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateDetailOperationCompleted);
+        public void SelectListCityAsync(object userState) {
+            if ((this.SelectListCityOperationCompleted == null)) {
+                this.SelectListCityOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSelectListCityOperationCompleted);
             }
-            this.InvokeAsync("UpdateDetail", new object[] {
-                        PersonID,
-                        PersonName,
-                        PersonCity}, this.UpdateDetailOperationCompleted, userState);
+            this.InvokeAsync("SelectListCity", new object[0], this.SelectListCityOperationCompleted, userState);
         }
         
-        private void OnUpdateDetailOperationCompleted(object arg) {
-            if ((this.UpdateDetailCompleted != null)) {
+        private void OnSelectListCityOperationCompleted(object arg) {
+            if ((this.SelectListCityCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateDetailCompleted(this, new UpdateDetailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.SelectListCityCompleted(this, new SelectListCityCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteRecord", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int DeleteRecord(int PersonID) {
-            object[] results = this.Invoke("DeleteRecord", new object[] {
-                        PersonID});
-            return ((int)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void DeleteRecordAsync(int PersonID) {
-            this.DeleteRecordAsync(PersonID, null);
-        }
-        
-        /// <remarks/>
-        public void DeleteRecordAsync(int PersonID, object userState) {
-            if ((this.DeleteRecordOperationCompleted == null)) {
-                this.DeleteRecordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteRecordOperationCompleted);
-            }
-            this.InvokeAsync("DeleteRecord", new object[] {
-                        PersonID}, this.DeleteRecordOperationCompleted, userState);
-        }
-        
-        private void OnDeleteRecordOperationCompleted(object arg) {
-            if ((this.DeleteRecordCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.DeleteRecordCompleted(this, new DeleteRecordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDetialByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetDetialByID(int ID) {
-            object[] results = this.Invoke("GetDetialByID", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SelectCityById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet SelectCityById(int ID) {
+            object[] results = this.Invoke("SelectCityById", new object[] {
                         ID});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetDetialByIDAsync(int ID) {
-            this.GetDetialByIDAsync(ID, null);
+        public void SelectCityByIdAsync(int ID) {
+            this.SelectCityByIdAsync(ID, null);
         }
         
         /// <remarks/>
-        public void GetDetialByIDAsync(int ID, object userState) {
-            if ((this.GetDetialByIDOperationCompleted == null)) {
-                this.GetDetialByIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDetialByIDOperationCompleted);
+        public void SelectCityByIdAsync(int ID, object userState) {
+            if ((this.SelectCityByIdOperationCompleted == null)) {
+                this.SelectCityByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSelectCityByIdOperationCompleted);
             }
-            this.InvokeAsync("GetDetialByID", new object[] {
-                        ID}, this.GetDetialByIDOperationCompleted, userState);
+            this.InvokeAsync("SelectCityById", new object[] {
+                        ID}, this.SelectCityByIdOperationCompleted, userState);
         }
         
-        private void OnGetDetialByIDOperationCompleted(object arg) {
-            if ((this.GetDetialByIDCompleted != null)) {
+        private void OnSelectCityByIdOperationCompleted(object arg) {
+            if ((this.SelectCityByIdCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetDetialByIDCompleted(this, new GetDetialByIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.SelectCityByIdCompleted(this, new SelectCityByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetlistcityByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetlistcityByID() {
-            object[] results = this.Invoke("GetlistcityByID", new object[0]);
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPronostic", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int InsertPronostic(int id_ciudad, int id_clima, int velocidad_viento, int temperatura, int Posibilidad_lluvia, string Direccion_viento) {
+            object[] results = this.Invoke("InsertPronostic", new object[] {
+                        id_ciudad,
+                        id_clima,
+                        velocidad_viento,
+                        temperatura,
+                        Posibilidad_lluvia,
+                        Direccion_viento});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPronosticAsync(int id_ciudad, int id_clima, int velocidad_viento, int temperatura, int Posibilidad_lluvia, string Direccion_viento) {
+            this.InsertPronosticAsync(id_ciudad, id_clima, velocidad_viento, temperatura, Posibilidad_lluvia, Direccion_viento, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPronosticAsync(int id_ciudad, int id_clima, int velocidad_viento, int temperatura, int Posibilidad_lluvia, string Direccion_viento, object userState) {
+            if ((this.InsertPronosticOperationCompleted == null)) {
+                this.InsertPronosticOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPronosticOperationCompleted);
+            }
+            this.InvokeAsync("InsertPronostic", new object[] {
+                        id_ciudad,
+                        id_clima,
+                        velocidad_viento,
+                        temperatura,
+                        Posibilidad_lluvia,
+                        Direccion_viento}, this.InsertPronosticOperationCompleted, userState);
+        }
+        
+        private void OnInsertPronosticOperationCompleted(object arg) {
+            if ((this.InsertPronosticCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPronosticCompleted(this, new InsertPronosticCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdatePronostic", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int UpdatePronostic(int id_ciudad, int id_clima, int velocidad_viento, int temperatura, int Posibilidad_lluvia, string Direccion_viento) {
+            object[] results = this.Invoke("UpdatePronostic", new object[] {
+                        id_ciudad,
+                        id_clima,
+                        velocidad_viento,
+                        temperatura,
+                        Posibilidad_lluvia,
+                        Direccion_viento});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdatePronosticAsync(int id_ciudad, int id_clima, int velocidad_viento, int temperatura, int Posibilidad_lluvia, string Direccion_viento) {
+            this.UpdatePronosticAsync(id_ciudad, id_clima, velocidad_viento, temperatura, Posibilidad_lluvia, Direccion_viento, null);
+        }
+        
+        /// <remarks/>
+        public void UpdatePronosticAsync(int id_ciudad, int id_clima, int velocidad_viento, int temperatura, int Posibilidad_lluvia, string Direccion_viento, object userState) {
+            if ((this.UpdatePronosticOperationCompleted == null)) {
+                this.UpdatePronosticOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdatePronosticOperationCompleted);
+            }
+            this.InvokeAsync("UpdatePronostic", new object[] {
+                        id_ciudad,
+                        id_clima,
+                        velocidad_viento,
+                        temperatura,
+                        Posibilidad_lluvia,
+                        Direccion_viento}, this.UpdatePronosticOperationCompleted, userState);
+        }
+        
+        private void OnUpdatePronosticOperationCompleted(object arg) {
+            if ((this.UpdatePronosticCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdatePronosticCompleted(this, new UpdatePronosticCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ValidateUserws", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet ValidateUserws(string Usuario, string Contrasenia) {
+            object[] results = this.Invoke("ValidateUserws", new object[] {
+                        Usuario,
+                        Contrasenia});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetlistcityByIDAsync() {
-            this.GetlistcityByIDAsync(null);
+        public void ValidateUserwsAsync(string Usuario, string Contrasenia) {
+            this.ValidateUserwsAsync(Usuario, Contrasenia, null);
         }
         
         /// <remarks/>
-        public void GetlistcityByIDAsync(object userState) {
-            if ((this.GetlistcityByIDOperationCompleted == null)) {
-                this.GetlistcityByIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetlistcityByIDOperationCompleted);
+        public void ValidateUserwsAsync(string Usuario, string Contrasenia, object userState) {
+            if ((this.ValidateUserwsOperationCompleted == null)) {
+                this.ValidateUserwsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnValidateUserwsOperationCompleted);
             }
-            this.InvokeAsync("GetlistcityByID", new object[0], this.GetlistcityByIDOperationCompleted, userState);
+            this.InvokeAsync("ValidateUserws", new object[] {
+                        Usuario,
+                        Contrasenia}, this.ValidateUserwsOperationCompleted, userState);
         }
         
-        private void OnGetlistcityByIDOperationCompleted(object arg) {
-            if ((this.GetlistcityByIDCompleted != null)) {
+        private void OnValidateUserwsOperationCompleted(object arg) {
+            if ((this.ValidateUserwsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetlistcityByIDCompleted(this, new GetlistcityByIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.ValidateUserwsCompleted(this, new ValidateUserwsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -263,95 +311,17 @@ namespace ConsumoClima.serverweather {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void InsertDetailCompletedEventHandler(object sender, InsertDetailCompletedEventArgs e);
+    public delegate void SelectAllCityCompletedEventHandler(object sender, SelectAllCityCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class InsertDetailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class SelectAllCityCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal InsertDetailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public int Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void UpdateDetailCompletedEventHandler(object sender, UpdateDetailCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateDetailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UpdateDetailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public int Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void DeleteRecordCompletedEventHandler(object sender, DeleteRecordCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class DeleteRecordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal DeleteRecordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public int Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void GetDetialByIDCompletedEventHandler(object sender, GetDetialByIDCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetDetialByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetDetialByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal SelectAllCityCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -367,17 +337,121 @@ namespace ConsumoClima.serverweather {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void GetlistcityByIDCompletedEventHandler(object sender, GetlistcityByIDCompletedEventArgs e);
+    public delegate void SelectListCityCompletedEventHandler(object sender, SelectListCityCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetlistcityByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class SelectListCityCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetlistcityByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal SelectListCityCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void SelectCityByIdCompletedEventHandler(object sender, SelectCityByIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SelectCityByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SelectCityByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void InsertPronosticCompletedEventHandler(object sender, InsertPronosticCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPronosticCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPronosticCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void UpdatePronosticCompletedEventHandler(object sender, UpdatePronosticCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdatePronosticCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdatePronosticCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void ValidateUserwsCompletedEventHandler(object sender, ValidateUserwsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ValidateUserwsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ValidateUserwsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

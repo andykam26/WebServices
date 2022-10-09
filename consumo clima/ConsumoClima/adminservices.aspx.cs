@@ -16,7 +16,7 @@ namespace ConsumoClima
             if (!IsPostBack)
             {
                 serverweather.clima_ws Objws = new serverweather.clima_ws();
-                DataSet dscity = Objws.GetlistcityByID();
+                DataSet dscity = Objws.SelectListCity();
                 if (dscity.Tables[0] != null && dscity.Tables[0].Rows.Count > 0)
                 {
                     DL_City.DataSource = dscity.Tables[0];
@@ -45,7 +45,7 @@ namespace ConsumoClima
             // consume el webservices enviando el ID de la ciudad
             string tipo_clima;
             serverweather.clima_ws Objws = new serverweather.clima_ws();
-            DataSet ret = Objws.GetDetialByID(Convert.ToInt32(DL_City.SelectedItem.Value));
+            DataSet ret = Objws.SelectCityById(Convert.ToInt32(DL_City.SelectedItem.Value));
 
             if (ret.Tables.Count > 0)
             {

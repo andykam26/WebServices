@@ -13,7 +13,7 @@ namespace WSDatos
 
         SqlConnection conn = new SqlConnection("Data Source=DESKTOP-FU83NIC\\SQLEXPRESS;Initial Catalog=wsclima;Persist Security Info=True;User ID=sa;Password=771026juan*");
    
-        public SqlDataAdapter Getlistcitysa()
+        public SqlDataAdapter Getlistcitysds()
         {
             SqlDataAdapter sqladp = new SqlDataAdapter();
             using (SqlCommand cmd = new SqlCommand("SP_Pronostico_clima_select", conn))
@@ -123,9 +123,35 @@ namespace WSDatos
                 retRecord = cmd.ExecuteNonQuery();
                 return retRecord;
             }
+        }
+        public SqlDataAdapter UserValidate(string Usuario, string Contrasenia, string Patron)
+        {
+            //valida el usuario y con la variable patron desencripta la contraseña
+            SqlDataAdapter sqladp = new SqlDataAdapter();
+            using (SqlCommand cmd = new SqlCommand("SP_ValidarUsuario", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("Usuario", SqlDbType.VarChar, 50).Value = Usuario;
+                cmd.Parameters.Add("Contrasenia", SqlDbType.VarChar, 50).Value = Contrasenia;
+                cmd.Parameters.Add("Patron", SqlDbType.VarChar, 50).Value = Patron;
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
 
+                sqladp.SelectCommand = cmd;
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+
+            return sqladp;
         }
     }
+
 }
 
 

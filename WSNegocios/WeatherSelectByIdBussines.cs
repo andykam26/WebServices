@@ -15,7 +15,7 @@ namespace WSNegocios
             DataSet ds = new DataSet();
             SqlDataAdapter sqladpt = new SqlDataAdapter();
             WeatherSelectByIdData pronosticosq = new WeatherSelectByIdData();
-            sqladpt = pronosticosq.Getlistcitysa();
+            sqladpt = pronosticosq.Getlistcitysds();
             //pronosticosq.GetlistcityByIDsa;
             sqladpt.Fill(ds);
             return ds;
@@ -54,6 +54,15 @@ namespace WSNegocios
             WeatherSelectByIdData UpdatePronostic = new WeatherSelectByIdData();
             retRecord = UpdatePronostic.UpdatePronostic(id_ciudad, id_clima, velocidad_viento, temperatura, Posibilidad_lluvia, Direccion_viento);
             return retRecord;
+        }
+        public DataSet ValidateUserBs(string Usuario, string Contrasenia, string Patron)
+        {
+            DataSet ds = new DataSet();
+            SqlDataAdapter sqladpt = new SqlDataAdapter();
+            WeatherSelectByIdData user = new WeatherSelectByIdData();
+            sqladpt = user.UserValidate(Usuario, Contrasenia, Patron);
+            sqladpt.Fill(ds);
+            return ds;
         }
     }
 }

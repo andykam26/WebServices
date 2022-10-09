@@ -68,5 +68,14 @@ namespace ws_clima
 
             return InsertRecord;
         }
+
+        [WebMethod]
+        public DataSet ValidateUserws(string Usuario, string Contrasenia)
+        {
+            string patron = "colombia";
+            WeatherSelectByIdBussines UserValidate = new WeatherSelectByIdBussines();
+
+            return UserValidate.ValidateUserBs(Usuario,Contrasenia, patron);
+        }
     }
 }

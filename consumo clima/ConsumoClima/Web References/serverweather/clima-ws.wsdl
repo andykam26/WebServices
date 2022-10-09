@@ -2,62 +2,13 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="InsertDetail">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="PersonName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="PersonCity" type="s:string" />
-          </s:sequence>
-        </s:complexType>
+      <s:element name="SelectAllCity">
+        <s:complexType />
       </s:element>
-      <s:element name="InsertDetailResponse">
+      <s:element name="SelectAllCityResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="InsertDetailResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateDetail">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="PersonID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="PersonName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="PersonCity" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateDetailResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="UpdateDetailResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteRecord">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="PersonID" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteRecordResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="DeleteRecordResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDetialByID">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDetialByIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetDetialByIDResult">
+            <s:element minOccurs="0" maxOccurs="1" name="SelectAllCityResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -68,13 +19,94 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetlistcityByID">
+      <s:element name="SelectListCity">
         <s:complexType />
       </s:element>
-      <s:element name="GetlistcityByIDResponse">
+      <s:element name="SelectListCityResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetlistcityByIDResult">
+            <s:element minOccurs="0" maxOccurs="1" name="SelectListCityResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectCityById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectCityByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectCityByIdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPronostic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_ciudad" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_clima" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="velocidad_viento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="temperatura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Posibilidad_lluvia" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Direccion_viento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPronosticResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertPronosticResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePronostic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_ciudad" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_clima" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="velocidad_viento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="temperatura" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Posibilidad_lluvia" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Direccion_viento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePronosticResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdatePronosticResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserws">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Contrasenia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserwsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateUserwsResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -87,62 +119,72 @@
       </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="InsertDetailSoapIn">
-    <wsdl:part name="parameters" element="tns:InsertDetail" />
+  <wsdl:message name="SelectAllCitySoapIn">
+    <wsdl:part name="parameters" element="tns:SelectAllCity" />
   </wsdl:message>
-  <wsdl:message name="InsertDetailSoapOut">
-    <wsdl:part name="parameters" element="tns:InsertDetailResponse" />
+  <wsdl:message name="SelectAllCitySoapOut">
+    <wsdl:part name="parameters" element="tns:SelectAllCityResponse" />
   </wsdl:message>
-  <wsdl:message name="UpdateDetailSoapIn">
-    <wsdl:part name="parameters" element="tns:UpdateDetail" />
+  <wsdl:message name="SelectListCitySoapIn">
+    <wsdl:part name="parameters" element="tns:SelectListCity" />
   </wsdl:message>
-  <wsdl:message name="UpdateDetailSoapOut">
-    <wsdl:part name="parameters" element="tns:UpdateDetailResponse" />
+  <wsdl:message name="SelectListCitySoapOut">
+    <wsdl:part name="parameters" element="tns:SelectListCityResponse" />
   </wsdl:message>
-  <wsdl:message name="DeleteRecordSoapIn">
-    <wsdl:part name="parameters" element="tns:DeleteRecord" />
+  <wsdl:message name="SelectCityByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectCityById" />
   </wsdl:message>
-  <wsdl:message name="DeleteRecordSoapOut">
-    <wsdl:part name="parameters" element="tns:DeleteRecordResponse" />
+  <wsdl:message name="SelectCityByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectCityByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="GetDetialByIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetDetialByID" />
+  <wsdl:message name="InsertPronosticSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPronostic" />
   </wsdl:message>
-  <wsdl:message name="GetDetialByIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetDetialByIDResponse" />
+  <wsdl:message name="InsertPronosticSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPronosticResponse" />
   </wsdl:message>
-  <wsdl:message name="GetlistcityByIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetlistcityByID" />
+  <wsdl:message name="UpdatePronosticSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePronostic" />
   </wsdl:message>
-  <wsdl:message name="GetlistcityByIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetlistcityByIDResponse" />
+  <wsdl:message name="UpdatePronosticSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePronosticResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserwsSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateUserws" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserwsSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateUserwsResponse" />
   </wsdl:message>
   <wsdl:portType name="clima_wsSoap">
-    <wsdl:operation name="InsertDetail">
-      <wsdl:input message="tns:InsertDetailSoapIn" />
-      <wsdl:output message="tns:InsertDetailSoapOut" />
+    <wsdl:operation name="SelectAllCity">
+      <wsdl:input message="tns:SelectAllCitySoapIn" />
+      <wsdl:output message="tns:SelectAllCitySoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="UpdateDetail">
-      <wsdl:input message="tns:UpdateDetailSoapIn" />
-      <wsdl:output message="tns:UpdateDetailSoapOut" />
+    <wsdl:operation name="SelectListCity">
+      <wsdl:input message="tns:SelectListCitySoapIn" />
+      <wsdl:output message="tns:SelectListCitySoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="DeleteRecord">
-      <wsdl:input message="tns:DeleteRecordSoapIn" />
-      <wsdl:output message="tns:DeleteRecordSoapOut" />
+    <wsdl:operation name="SelectCityById">
+      <wsdl:input message="tns:SelectCityByIdSoapIn" />
+      <wsdl:output message="tns:SelectCityByIdSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetDetialByID">
-      <wsdl:input message="tns:GetDetialByIDSoapIn" />
-      <wsdl:output message="tns:GetDetialByIDSoapOut" />
+    <wsdl:operation name="InsertPronostic">
+      <wsdl:input message="tns:InsertPronosticSoapIn" />
+      <wsdl:output message="tns:InsertPronosticSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetlistcityByID">
-      <wsdl:input message="tns:GetlistcityByIDSoapIn" />
-      <wsdl:output message="tns:GetlistcityByIDSoapOut" />
+    <wsdl:operation name="UpdatePronostic">
+      <wsdl:input message="tns:UpdatePronosticSoapIn" />
+      <wsdl:output message="tns:UpdatePronosticSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserws">
+      <wsdl:input message="tns:ValidateUserwsSoapIn" />
+      <wsdl:output message="tns:ValidateUserwsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="clima_wsSoap" type="tns:clima_wsSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="InsertDetail">
-      <soap:operation soapAction="http://tempuri.org/InsertDetail" style="document" />
+    <wsdl:operation name="SelectAllCity">
+      <soap:operation soapAction="http://tempuri.org/SelectAllCity" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -150,8 +192,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateDetail">
-      <soap:operation soapAction="http://tempuri.org/UpdateDetail" style="document" />
+    <wsdl:operation name="SelectListCity">
+      <soap:operation soapAction="http://tempuri.org/SelectListCity" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -159,8 +201,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteRecord">
-      <soap:operation soapAction="http://tempuri.org/DeleteRecord" style="document" />
+    <wsdl:operation name="SelectCityById">
+      <soap:operation soapAction="http://tempuri.org/SelectCityById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -168,8 +210,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDetialByID">
-      <soap:operation soapAction="http://tempuri.org/GetDetialByID" style="document" />
+    <wsdl:operation name="InsertPronostic">
+      <soap:operation soapAction="http://tempuri.org/InsertPronostic" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -177,8 +219,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetlistcityByID">
-      <soap:operation soapAction="http://tempuri.org/GetlistcityByID" style="document" />
+    <wsdl:operation name="UpdatePronostic">
+      <soap:operation soapAction="http://tempuri.org/UpdatePronostic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserws">
+      <soap:operation soapAction="http://tempuri.org/ValidateUserws" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -189,8 +240,8 @@
   </wsdl:binding>
   <wsdl:binding name="clima_wsSoap12" type="tns:clima_wsSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="InsertDetail">
-      <soap12:operation soapAction="http://tempuri.org/InsertDetail" style="document" />
+    <wsdl:operation name="SelectAllCity">
+      <soap12:operation soapAction="http://tempuri.org/SelectAllCity" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -198,8 +249,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateDetail">
-      <soap12:operation soapAction="http://tempuri.org/UpdateDetail" style="document" />
+    <wsdl:operation name="SelectListCity">
+      <soap12:operation soapAction="http://tempuri.org/SelectListCity" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -207,8 +258,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteRecord">
-      <soap12:operation soapAction="http://tempuri.org/DeleteRecord" style="document" />
+    <wsdl:operation name="SelectCityById">
+      <soap12:operation soapAction="http://tempuri.org/SelectCityById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -216,8 +267,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDetialByID">
-      <soap12:operation soapAction="http://tempuri.org/GetDetialByID" style="document" />
+    <wsdl:operation name="InsertPronostic">
+      <soap12:operation soapAction="http://tempuri.org/InsertPronostic" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -225,8 +276,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetlistcityByID">
-      <soap12:operation soapAction="http://tempuri.org/GetlistcityByID" style="document" />
+    <wsdl:operation name="UpdatePronostic">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePronostic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserws">
+      <soap12:operation soapAction="http://tempuri.org/ValidateUserws" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
