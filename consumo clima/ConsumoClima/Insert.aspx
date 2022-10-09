@@ -1,9 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Page.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="ConsumoClima.Admin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Page.Master" AutoEventWireup="true" CodeBehind="Insert.aspx.cs" Inherits="ConsumoClima.Insert" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
     <main class="main-content">
 				<div class="container">
 					<div class="breadcrumb">
@@ -25,7 +23,24 @@
 							<h2 class="section-title"><asp:Label ID="lblBienvenida" runat="server" Text=""></asp:Label></h2>
 							
 								<div class="contact-form">
-							
+								<div class="row">
+									<div class="col-md-6"><asp:DropDownList ID="DL_City" runat="server" OnSelectedIndexChanged="DL_City_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></div>
+									<div class="col-md-6"><asp:DropDownList ID="Ddl_clima" runat="server">
+                                        <asp:ListItem Value="0">Seleccione Tipo Clima</asp:ListItem>
+                                        <asp:ListItem Value="1">Soleado</asp:ListItem>
+                                        <asp:ListItem Value="2">Nublado</asp:ListItem>
+                                        <asp:ListItem Value="3">Lloviznas</asp:ListItem>
+                                        <asp:ListItem Value="4">Tormentas Electricas</asp:ListItem>
+                                        </asp:DropDownList></div>
+								</div>
+								<div class="row">
+									<div class="col-md-6"><input type="text" id="txt_Temperatura" runat="server" placeholder="Temperatura"></div>
+									<div class="col-md-6"><input type="text" id="txt_velocidad_viento" runat="server" placeholder="Velocidad del Viento"></div>
+								</div>
+										<div class="row">
+									<div class="col-md-6"><input type="text" id="txt_posibilidad_lluvia" runat="server" placeholder="Posibilidad de lluvia "></div>
+									<div class="col-md-6"><input type="text" id="txt_direccion_viento" runat="server" placeholder="Direccion del Viento"></div>
+								</div>
 								
 		 <div>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" AllowPaging="true">
@@ -41,7 +56,8 @@
         </asp:GridView>
     </div>
 								<div class="text-right">
-									&nbsp;</div>
+									<asp:Button ID="Btn_save" runat="server" OnClick="Btn_save_Click" Text="Guardar" />
+&nbsp;</div>
 						</div>
 
 						</div>

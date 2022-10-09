@@ -55,6 +55,7 @@
   <ItemGroup>
     <Content Include="Admin.aspx" />
     <Content Include="css\Estilos.css" />
+    <Content Include="Insert.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Page.Master" />
     <None Include="Web.Debug.config">
@@ -144,6 +145,7 @@
     <Content Include="js\min\plugins-min.js" />
     <Content Include="js\plugins.js" />
     <Content Include="css\style.css" />
+    <Content Include="update.aspx" />
     <Content Include="Web.config" />
     <None Include="Web References\serverweather\clima-ws.wsdl" />
     <None Include="Web References\serverweather\Reference.map">
@@ -166,6 +168,13 @@
     <Compile Include="adminservices.aspx.designer.cs">
       <DependentUpon>adminservices.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Insert.aspx.cs">
+      <DependentUpon>Insert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Insert.aspx.designer.cs">
+      <DependentUpon>Insert.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,6 +194,13 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="update.aspx.cs">
+      <DependentUpon>update.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="update.aspx.designer.cs">
+      <DependentUpon>update.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\serverweather\Reference.cs">
       <AutoGen>True</AutoGen>

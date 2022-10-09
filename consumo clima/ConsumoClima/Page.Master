@@ -35,7 +35,6 @@
 							<li class="menu-item current-menu-item"><a href="adminservices.aspx">Home</a></li>
 						
 							<li class="menu-item"><a href="login.aspx">Login</a></li>
-							<li class="menu-item"><a href="login.aspx">Logout</a></li>
 						</ul> 
 					</div> 
 
