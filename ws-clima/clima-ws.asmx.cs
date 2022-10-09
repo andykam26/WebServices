@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Data.SqlClient;
+using System.Web.Configuration;
+using System.Data;
 
 namespace ws_clima
 {
@@ -17,11 +20,101 @@ namespace ws_clima
     public class clima_ws : System.Web.Services.WebService
     {
 
+        SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["wsclimaConnectionString"].ConnectionString);
+     
+    
+
         [WebMethod]
-       
-        public string HelloWorld()
+        public int InsertDetail(string PersonName, string PersonCity)
         {
-            return "Hola a todos";
+            int retRecord = 0;
+            //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("InsertDetail", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id_ciudad", SqlDbType.Int).Value = PersonName;
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+                    retRecord = cmd.ExecuteNonQuery();
+                }
+
+            }
+            return retRecord;
+        }
+        [WebMethod]
+        public int UpdateDetail(int PersonID, string PersonName, string PersonCity)
+        {
+            int retRecord = 0;
+            //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("UpdateDetail", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("PersonID", SqlDbType.VarChar, 100).Value = PersonID;
+                    cmd.Parameters.Add("PersonName", SqlDbType.VarChar, 100).Value = PersonName;
+                    cmd.Parameters.Add("PersonCity", SqlDbType.VarChar, 100).Value = PersonCity;
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+                    retRecord = cmd.ExecuteNonQuery();
+                }
+
+            }
+            return retRecord;
+        }
+        [WebMethod]
+        public int DeleteRecord(int PersonID)
+        {
+            int Rowupdate = 0;
+            //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("DeleteDetialByID", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("PersonID", SqlDbType.Int).Value = PersonID;
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+                    Rowupdate = cmd.ExecuteNonQuery();
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+
+            }
+            return Rowupdate;
+        }
+        [WebMethod]
+        public DataSet GetDetialByID(int PersonID)
+        {
+            DataSet ds = new DataSet();
+            //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_Pronostico_clima", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("id_ciudad", SqlDbType.Int).Value = PersonID;
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+                    SqlDataAdapter adp = new SqlDataAdapter();
+                    adp.SelectCommand = cmd;
+                    adp.Fill(ds);
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+
+            }
+            return ds;
         }
     }
 }
