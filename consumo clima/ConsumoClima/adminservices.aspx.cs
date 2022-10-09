@@ -30,7 +30,10 @@ namespace ConsumoClima
 
                     //Disable the default item.
                     DL_City.Items[0].Attributes["disabled"] = "disabled";
-
+                    var dateAndTime = DateTime.Now;
+                    var Date = dateAndTime.ToLongDateString();
+              
+                    lbldate.Text = Date;
                 }
             }
 

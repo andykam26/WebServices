@@ -18,8 +18,9 @@
 					<div class="forecast-container">
 						<div class="today forecast">
 							<div class="forecast-header">
-								<div class="day">Monday</div>
-								<div class="date">6 Oct</div>
+								<div class="day">
+			<asp:Label ID="lbldate" runat="server" Text="Label"></asp:Label></div>
+								<div class="date"></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="location">
