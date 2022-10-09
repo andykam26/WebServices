@@ -4,12 +4,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<div class="hero" data-bg-image="images/banner.png">
 				<div class="container">
-    <form action="#" class="find-location">
-		    <asp:DropDownList ID="DL_City" runat="server" OnSelectedIndexChanged="DL_City_SelectedIndexChanged">
-        <asp:ListItem Value="0">ciudad</asp:ListItem>
+  
+		    <asp:DropDownList ID="DL_City" runat="server" OnSelectedIndexChanged="DL_City_SelectedIndexChanged" AutoPostBack="True">
+      
     </asp:DropDownList>
-						
-					</form>
+				 <asp:Label runat="server" id="lblMessage">
+        </asp:Label>
 
 				</div>
 			</div>
@@ -22,16 +22,18 @@
 								<div class="date">6 Oct</div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
-								<div class="location">New York</div>
+								<div class="location">
+		<asp:Label ID="lblciudad" runat="server" Text=""></asp:Label></div>
 								<div class="degree">
-									<div class="num">23<sup>o</sup>C</div>
+									<div class="num">
+			<asp:Label ID="lbltemperatura" runat="server" Text=""></asp:Label><sup>o</sup>C</div>
 									<div class="forecast-icon">
-										<img src="images/icons/icon-1.svg" alt="" width=90>
+										<img id="img_principal" src=""  runat = "server" alt="" width=90>
 									</div>	
 								</div>
-								<span><img src="images/icon-umberella.png" alt="">20%</span>
-								<span><img src="images/icon-wind.png" alt="">18km/h</span>
-								<span><img src="images/icon-compass.png" alt="">East</span>
+								<span><img src="images/icon-umberella.png" alt=""><asp:Label ID="lbllluvia" runat="server" Text="Label"></asp:Label>%</span>
+								<span><img src="images/icon-wind.png" alt=""><asp:Label ID="Lblviento" runat="server" Text="Label"></asp:Label>km/h</span>
+								<span><img src="images/icon-compass.png" alt=""><asp:Label ID="lbldireccion" runat="server" Text="Label"></asp:Label></span>
 							</div>
 						</div>
 						<div class="forecast">

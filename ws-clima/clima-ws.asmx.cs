@@ -96,7 +96,7 @@ namespace ws_clima
             DataSet ds = new DataSet();
             //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("SP_Pronostico_clima", conn))
+                using (SqlCommand cmd = new SqlCommand("SP_Pronostico_clima_select", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("id_ciudad", SqlDbType.Int).Value = ID;
