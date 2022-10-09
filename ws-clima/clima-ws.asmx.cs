@@ -91,7 +91,7 @@ namespace ws_clima
             return Rowupdate;
         }
         [WebMethod]
-        public DataSet GetDetialByID(int PersonID)
+        public DataSet GetDetialByID(int ID)
         {
             DataSet ds = new DataSet();
             //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
@@ -99,7 +99,33 @@ namespace ws_clima
                 using (SqlCommand cmd = new SqlCommand("SP_Pronostico_clima", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("id_ciudad", SqlDbType.Int).Value = PersonID;
+                    cmd.Parameters.Add("id_ciudad", SqlDbType.Int).Value = ID;
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+                    SqlDataAdapter adp = new SqlDataAdapter();
+                    adp.SelectCommand = cmd;
+                    adp.Fill(ds);
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+
+            }
+            return ds;
+        }
+        [WebMethod]
+        public DataSet GetlistcityByID()
+        {
+            DataSet ds = new DataSet();
+            //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_Pronostico_clima_list", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.Add("id_ciudad", SqlDbType.Int).Value = ID;
                     if (conn.State != ConnectionState.Open)
                     {
                         conn.Open();
