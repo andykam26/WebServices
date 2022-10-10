@@ -35,11 +35,19 @@
                                         </asp:DropDownList></div>
 								</div>
 								<div class="row">
-									<div class="col-md-6"><input type="text" id="txt_Temperatura" runat="server" placeholder="Temperatura"></div>
-									<div class="col-md-6"><input type="text" id="txt_velocidad_viento" runat="server" placeholder="Velocidad del Viento"></div>
+									<div class="col-md-6"><input type="text" id="txt_Temperatura" runat="server" placeholder="Temperatura">
+										<asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txt_Temperatura" ErrorMessage="La temperatura debe ser mayor a 1 e inferior a 50" MaximumValue="50" MinimumValue="1" ForeColor="Red"></asp:RangeValidator>
+									</div>
+									
+									<div class="col-md-6"><input type="text" id="txt_velocidad_viento" runat="server" placeholder="Velocidad del Viento">
+										<asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="txt_velocidad_viento" ErrorMessage="La velocidad debe ser mayor a 1 e inferior a 300" MaximumValue="300" MinimumValue="1" ForeColor="Red"></asp:RangeValidator>
+									</div>
+									
 								</div>
 										<div class="row">
-									<div class="col-md-6"><input type="text" id="txt_posibilidad_lluvia" runat="server" placeholder="Posibilidad de lluvia "></div>
+									<div class="col-md-6"><input type="text" id="txt_posibilidad_lluvia" runat="server" placeholder="Posibilidad de lluvia ">
+										<asp:RangeValidator ID="RangeValidator3" runat="server" ControlToValidate="txt_posibilidad_lluvia" ErrorMessage="La velocidad debe ser mayor a 1 e inferior a 100" MaximumValue="100" MinimumValue="1" ForeColor="Red"></asp:RangeValidator>
+									</div>
 									<div class="col-md-6"><asp:DropDownList ID="Ddl_direccion_viento" runat="server">
                                         <asp:ListItem Value="0">Seleccione</asp:ListItem>
                                         <asp:ListItem Value="Norte">Norte</asp:ListItem>

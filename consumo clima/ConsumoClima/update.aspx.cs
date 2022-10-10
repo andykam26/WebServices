@@ -92,7 +92,7 @@ namespace ConsumoClima
             DataTable dt = dscity.Tables[0];
             GridView1.DataSource = dt;
             GridView1.DataBind();
-            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "Func()", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "exitoupdate()", true);
             
         }
     }

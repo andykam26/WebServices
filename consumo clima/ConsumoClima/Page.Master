@@ -13,7 +13,7 @@
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" language="javascript">
-    function Func() {
+        function exitoupdate() {
         alert("Se actualizo con exito!")
     }
     </script>
